@@ -22,7 +22,7 @@ function ResetPassword() {
       const result = await response.json();
       if (result.success) {
         handleSuccess(result.message);
-        setTimeout(() => navigate('/login'), 1500);
+        setTimeout(() => navigate('/login'),500);
       } else {
         handleError(result.message);
       }

@@ -3,6 +3,8 @@ import './App.css';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Home from './pages/Home';
+import CustomerPage from './pages/CustomerPage';
+import CategoryPage from './pages/CategoryPage';
 import ChangePassword from './pages/ChangePassword';
 import { useState } from 'react';
 import RefreshHandler from './RefreshHandler';
@@ -24,6 +26,8 @@ function App() {
            <Route path="/login" element={<Login />} />
            <Route path="/signup" element={<Signup />} />
            <Route path="/home" element={<PrivateRoute element={<Home />} />} />
+            <Route path="/customers" element={<CustomerPage />} />
+            <Route path="/categories" element={<CategoryPage />} />
            <Route path="/change-password" element={<PrivateRoute element={<ChangePassword />} />} />
            <Route path="/forgot-password" element={<ForgotPassword />} />
            <Route path="/reset-password/:token" element={<ResetPassword />} />

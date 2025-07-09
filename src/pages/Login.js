@@ -41,7 +41,11 @@ function Login() {
         localStorage.setItem('loggedInUser', name);
         setTimeout(() => {
           navigate('/home');
+          
+          
         }, 1000);
+        
+        
       } else if (error) {
         const details = error?.details[0]?.message || 'An error occurred';
         handleError(details);

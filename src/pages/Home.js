@@ -3,11 +3,9 @@ import { useNavigate, Link } from 'react-router-dom';
 import { handleError, handleSuccess } from '../utils';
 import { ToastContainer } from 'react-toastify';
 
-
 function Home() {
   const [loggedInUser, setLoggedInUser] = useState('');
-  const [products, setProducts] = useState('');
-
+  const [products, setProducts] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -44,22 +42,36 @@ function Home() {
   }, []);
 
   return (
-    <div className="container">
-      <h1>Welcome, {loggedInUser}</h1>
-       
-      <button onClick={handleLogout}>Logout</button>
-      <span>
-        <Link to="/change-password">Change Password</Link>
-      </span>
-      <div>
-        {products && products.map((item, index) => (
-          <ul key={index}>
-            <span>{item.name}: {item.price}</span>
-          </ul>
-        ))}
+      <div className="container">
+        <h1>Welcome, {loggedInUser}</h1>
+
+        <div style={{ marginBottom: "1rem" }}>
+          <button onClick={handleLogout}>Logout</button>
+          <span style={{ marginLeft: "1rem" }}>
+          <Link to="/change-password">Change Password</Link>
+        </span>
+        </div>
+
+        <div style={{ marginBottom: "1rem" }}>
+          <Link to="/customers">
+            <button>Manage Customers</button>
+          </Link>
+          <Link to="/categories" style={{ marginLeft: "1rem" }}>
+            <button>Manage Categories</button>
+          </Link>
+        </div>
+
+        <div>
+          <h2>📦 Products</h2>
+          {products.map((item, index) => (
+              <ul key={index}>
+                <span>{item.name}: {item.price}</span>
+              </ul>
+          ))}
+        </div>
+
+        <ToastContainer />
       </div>
-      <ToastContainer />
-    </div>
   );
 }
 
